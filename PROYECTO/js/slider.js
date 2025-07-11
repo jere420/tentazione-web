@@ -446,31 +446,36 @@ function mostrarToast(mensaje = "Producto agregado al carrito ✅") {
 }
 
 
+  // === BOTÓN VOLVER ARRIBA ===
+  const btn = document.getElementById("btnVolverArriba");
+  let hideTimeout;
 
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btn.classList.remove("hidden");
+      btn.classList.add("opacity-100", "vibrar");
+      btn.classList.remove("opacity-0");
 
-document.addEventListener("DOMContentLoaded", function () {
-  const enlaceSobre = document.querySelector('a[href="#sobre-tentazione"]');
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        btn.classList.remove("opacity-100", "vibrar");
+        btn.classList.add("opacity-0");
+      }, 1000);
+    } else {
+      btn.classList.add("hidden");
+      btn.classList.remove("opacity-100", "vibrar");
+    }
+  });
 
-  if (enlaceSobre) {
-    enlaceSobre.addEventListener("click", function (e) {
-      e.preventDefault();
-      const seccion = document.querySelector("#sobre-tentazione");
-      if (seccion) {
-        const offsetTop = seccion.getBoundingClientRect().top + window.scrollY - 100;
-
-        window.scrollTo({
-          top: offsetTop,
-          behavior: "smooth"
-        });
-      }
+  btn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
-  }
+  });
+
+
+
+
 });
-
-
-});
-
-
-
-
 

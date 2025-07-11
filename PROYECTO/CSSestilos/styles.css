@@ -2,12 +2,14 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   background-color: black;
   overflow-x: hidden;
+  overflow-y: auto; /* ✅ Agregado para permitir scroll vertical */
   scroll-behavior: smooth;
 }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
@@ -802,4 +804,40 @@ font-style: italic;
 .toast-animar {
   animation: slideUpFade 0.5s ease;
 }
+
+.boton-volver-arriba {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  background: linear-gradient(135deg, #f6e27a, #f3caca); /* dorado a rosado pastel */
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  padding: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 99999;
+  transition: transform 0.3s ease, opacity 0.5s ease;
+}
+
+.boton-volver-arriba:hover {
+  transform: scale(1.1);
+}
+
+.boton-volver-arriba.vibrar {
+  animation: vibrar 1s ease-in-out infinite;
+}
+
+@keyframes vibrar {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-3px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+
+
+
+
+
 
